@@ -1,6 +1,5 @@
-
 n = input('Enter length of bit stream : ');
-input_stream = input('Enter the bit stream : ');
+input_stream = input('Enter the bit stream in single quotes  : ');
 
 % User parameters
 bit_rate_uni = 0; % Unipolar NRZ
@@ -10,7 +9,7 @@ bit_rate = 0;
 baud_rate = 0;
 band_width = 0;
 
-choice = input('\nChoose a parameter\n1. Bit Rate\n2. Baud Rate\n3. Bandwidth\nEnter your choice : ');
+choice = input('\nChoose a parameter to modify:\n1. Bit Rate\n2. Baud Rate\n3. Bandwidth\nEnter your choice : ');
 if choice==1
 	bit_rate = input('\nEnter the bit rate : ');
 	bit_rate_uni = bit_rate;
