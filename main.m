@@ -35,7 +35,7 @@ x_line = zeros(1, n*sample_rate +2);    % Makes all values in matrix as 0
 uni = zeros(1, n*sample_rate +2);       % Makes all values in matrix as 0
 mlt = zeros(1, n*sample_rate +2);       % Makes all values in matrix as 0
 
-% X axis values
+% X axis values for default graphs
 for i = 0:(n*sample_rate)
 	x_line(i+2) = i/sample_rate;        % X-axis values are generated according to input length
 end
@@ -90,17 +90,17 @@ for i = 1:(n*sample_rate -1)
 end
 
 
-% Left Graphs
+% Default Graphs plotting
 
 % Plotting Unipolar NRZ --------------------------------------------
 subplot(2, 2, 1)
-plot(x_line, uni)
+plot(x_line, uni)           % Plot function
 axis([-0.1, n+0.7*n, -1.2, 1.7])
-xlabel('Time(sec)')
+xlabel('Time(sec)')         % Labelling
 ylabel('Amplitude')
 title('Unipolar NRZ')
 
-% Show data
+% Printing the parameter details
 text(n+0.2, 1.0, 'r = 0.5')
 text(n+0.2, 0.5, 'Bit Rate = 1.0 bps')
 text(n+0.2, 0.0, 'Baud Rate = 1.0 baud')
@@ -112,13 +112,13 @@ end
 
 
 subplot(2, 2, 3)
-plot(x_line, mlt)
+plot(x_line, mlt)               % Plot function
 axis([-0.1, n+0.7*n, -1.2, 1.7])
-xlabel('Time (sec)')
+xlabel('Time (sec)')            % Labelling
 ylabel('Amplitude')
 title('MLT-3(Default)')
 
-% Show data
+% Printing the parameter details
 text(n+0.2, 1.0, 'r = 1.0')
 text(n+0.2, 0.5, 'Bit Rate = 1.0 bps')
 text(n+0.2, 0.0, 'Baud Rate = 0.5 baud')
@@ -128,23 +128,23 @@ for i = 0:(n-1)
 	text(i+0.5, 1.2, input_stream(i+1))
 end
 
-% Right graphs --------------------------------------------------
+% User-defined graphs
 
-% Plotting Unipolar NRZ --------------------------------------------
+% Plotting Unipolar NRZ
 
-% X values
+% X axis values for user-defined graphs
 for i = 0:(n*sample_rate)
 	x_line(i+2) = i/sample_rate/bit_rate_uni;
 end
 
 subplot(2, 2, 2)
-plot(x_line, uni)
+plot(x_line, uni)           % Plot function
 axis([-0.1, n/bit_rate_uni+0.7*n/bit_rate_uni, -1.2, 1.7])
-xlabel('Time (sec)')
+xlabel('Time (sec)')        % Labelling
 ylabel('Amplitude')
 title('Unipolar NRZ (Modified)')
 
-% Show data
+% Printing the parameter details
 text(n/bit_rate_uni+0.2/bit_rate_uni, 1.0, 'r = 1')
 text(n/bit_rate_uni+0.2/bit_rate_uni, 0.5, strcat(strcat('Bit Rate = ', num2str(bit_rate_uni)), ' bps'))
 text(n/bit_rate_uni+0.2/bit_rate_uni, 0.0, strcat(strcat('Baud Rate = ', num2str(2*bit_rate_uni)), ' baud'))
@@ -155,13 +155,13 @@ for i = 0:(n-1)
 end
 
 subplot(2, 2, 4)
-plot(x_line, mlt)
+plot(x_line, mlt)           % Plot function
 axis([-0.1, n/bit_rate_uni+0.7*n/bit_rate_uni, -1.2, 1.7])
-xlabel('Time (sec)')
+xlabel('Time (sec)')            % Labelling
 ylabel('Amplitude')
 title('MLT-3 (Modified)')
 
-% Show data
+% Printing the parameter details
 text(n/bit_rate_uni+0.2/bit_rate_uni, 1.0, 'r = 1')
 text(n/bit_rate_uni+0.2/bit_rate_uni, 0.5, strcat(strcat('Bit Rate = ', num2str(bit_rate_uni)), ' bps'))
 text(n/bit_rate_uni+0.2/bit_rate_uni, 0.0, strcat(strcat('Baud Rate = ', num2str(2*bit_rate_uni)), ' baud'))
