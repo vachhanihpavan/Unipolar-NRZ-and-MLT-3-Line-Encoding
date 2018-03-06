@@ -1,14 +1,17 @@
+% Taking Inputs in input_stream array
 n = input('Enter length of bit stream : ');
 input_stream = input('Enter the bit stream in single quotes  : ');
 
-% User parameters
+% User defined parameters
 bit_rate_uni = 0; % Unipolar NRZ
 bit_rate_mlt = 0; % MLT 3
 
+% Default Parameters
 bit_rate = 0;
 baud_rate = 0;
 band_width = 0;
 
+% Printing options
 choice = input('\nChoose a parameter to modify:\n1. Bit Rate\n2. Baud Rate\n3. Bandwidth\nEnter your choice : ');
 if choice==1
 	bit_rate = input('\nEnter the bit rate : ');
@@ -26,20 +29,22 @@ else
 	fprintf('\nInvalid input... Chosing default values\n');
 end
 
-sample_rate = 10000; %step value
-x_line = zeros(1, n*sample_rate +2);
-uni = zeros(1, n*sample_rate +2);
-mlt = zeros(1, n*sample_rate +2);
+% Initialisation
+sample_rate = 10000;                    %step value
+x_line = zeros(1, n*sample_rate +2);    % Makes all values in matrix as 0
+uni = zeros(1, n*sample_rate +2);       % Makes all values in matrix as 0
+mlt = zeros(1, n*sample_rate +2);       % Makes all values in matrix as 0
 
-% X values
+% X axis values
 for i = 0:(n*sample_rate)
-	x_line(i+2) = i/sample_rate;
+	x_line(i+2) = i/sample_rate;        % X-axis values are generated according to input length
 end
 
-% Y1 values
-uni(1) = 0;
+% Y axis values for Unipolar NRZ
+uni(1) = 0;                             % Initialise the graph with 0
 uni(n*sample_rate +2) = 0;
 
+% Code to convert input stream to UNRZ
 for i = 0:(n*sample_rate -1)
 		if input_stream(floor(i/sample_rate) +1) - '0' == 0
 			uni(i+2) = 0;
@@ -48,16 +53,18 @@ for i = 0:(n*sample_rate -1)
 		end
 end
 
-% Y2 values
-mlt(1) = 0;
+% Y axis values for MLT-3
+mlt(1) = 0;                             % Initialise the graph with 0
 mlt(n*sample_rate +2) = 0;
-var = 1;
+var = 1;                                % Variable remembers the previous state was 1 or -1
+% Code for initial input bit 
 if (input_stream(1) == '1')
     mlt(1) = 1;
 else
     mlt(1) = 0;
 end
-    
+
+% Code to convert input stream to MLT-3
 for i = 1:(n*sample_rate -1)
 		if input_stream(floor(i/sample_rate) +1) - '0' == 0
 			mlt(i+1) = mlt(i);
@@ -83,7 +90,7 @@ for i = 1:(n*sample_rate -1)
 end
 
 
-% Left Graphs -----------------------------------------------
+% Left Graphs
 
 % Plotting Unipolar NRZ --------------------------------------------
 subplot(2, 2, 1)
