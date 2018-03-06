@@ -14,7 +14,7 @@ Given a stream of data bits (this is the input), you are required to produce a U
 ## Solution Description
 ### Unipolar Non-Return-To-Zero (UNRZ)
 Unipolar NRZ refers to a line coding scheme in which the binary low and high states, represented by numerals 0 and 1, are transmitted by specific and constant DC (direct-current) voltages.
-![image](misc/nrz.jpeg)
+![image](misc/18.jpeg)
 
 ### Multi-Level Transmit (MLT-3)
 MLT-3 encoding is a line coding scheme used in a telecommunication system for transmission purposes that uses three voltage levels.
@@ -44,4 +44,4 @@ $ Enter your choice : 1
 $ Enter the bit rate : 4
 ```
 This will generate a figure with all plots as follows:
-![result](misc/res.jpeg)
+![result](misc/res.jpg)
